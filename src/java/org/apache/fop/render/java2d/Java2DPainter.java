@@ -125,7 +125,9 @@ public class Java2DPainter extends AbstractIFPainter<Java2DDocumentHandler> {
         saveGraphicsState();
         try {
             concatenateTransformationMatrix(transform);
-            clipRect(clipRect);
+            if (clipRect != null) {
+                clipRect(clipRect);
+            }
         } catch (IOException ioe) {
             throw new IFException("I/O error in startViewport()", ioe);
         }
